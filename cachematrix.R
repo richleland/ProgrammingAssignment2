@@ -9,6 +9,9 @@
 ## Solve the inverse of the matrix:
 ##     > cacheSolve(special_matrix)
 ##     computing inverse of matrix
+##          [,1] [,2]
+##     [1,]   -2  1.5
+##     [2,]    1 -0.5
 ##
 ## The original matrix value:
 ##     > special_matrix$get()
@@ -37,7 +40,6 @@
 ## Running cacheSolve again will force re-computing, as the cache is empty:
 ##     > cacheSolve(special_matrix)
 ##     computing inverse of matrix
-##     > special_matrix$getinverse()
 ##          [,1] [,2]
 ##     [1,] -2.5    2
 ##     [2,]  1.5   -1
@@ -80,7 +82,5 @@ cacheSolve <- function(x, ...) {
     uninverted <- x$get()
     inverse <- solve(uninverted, ...)
     x$setinverse(inverse)
-    # return this as invisible so the special matrix object doesn't get output
-    # every time we run this method
-    invisible(x)
+    inverse
 }
